@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Health Track - Hospital Webapp</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Grafica -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="mr text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Health Track</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link ">Home</a>
+                        <a href="about.html" class="nav-item nav-link">Acerca</a>
+                        <a href="service.html" class="nav-item nav-link">Servicios</a>
+                        <a href="price.html" class="nav-item nav-link">Precios</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Paginas</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.html" class="dropdown-item active">Blog Detalle</a>
+                                <a href="team.html" class="dropdown-item">El Equipo</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonios</a>
+                                <a href="appointment.html" class="dropdown-item">Agendar</a>
+                                <a href="search.html" class="dropdown-item">Buscar</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contactanos</a>
+                        <a class="nav-item nav-link" (click)="navegarPerfil()"><i class="fa fa-user"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Blog Start -->
+    <div class="container py-5">
+        <div class="row g-5">
+            
+            <!-- Perfil Sidebar Start -->
+            <div class="bg-primary rounded col-lg-4 overflow-hidden" style="padding: 30px; object-fit: cover;">
+
+                <!-- Logo Form Start -->
+                <!-- <div class="mb-5">
+                    <div class="input-group">
+                        <button class="btn btn-secondary px-3"><i class="fa fa-user"></i></button>
+                        <a href="" class="form-control p-3 bg-light text-center">Sebastian Camargo</a>
+                        
+                    </div>
+                </div> -->
+
+                <div *ngIf="usuarioI">
+                    <h2>Perfil</h2>
+                    <p><strong>Nombre:</strong>  {{ usuarioI.nombre }}</p>
+                    <p> <strong>Apellido:</strong> {{ usuarioI.apellido }}</p>
+                    <p><strong>Correo: </strong> {{ usuarioI.correo }}</p>
+                  </div>
+                  
+                  
+
+                <!-- Search Form End -->
+
+                <!-- Category Start -->
+                <div class="mb-5">
+                    <h4 class="d-inline-block text-secondary text-uppercase border-bottom border-5 mb-4">Reportes</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="h5 under bg-light rounded py-2 px-3 mb-2 " href="/tablero"><i class="fa fa-chart-line me-3"></i>Tablero</a>
+                    </div>
+                </div>
+                <!-- Category End -->
+
+                <!-- Category Start -->
+                <div class="mb-5">
+                    <h4 class="d-inline-block text-secondary text-uppercase border-bottom border-5 mb-4">Gestion</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="h5 under bg-light rounded py-2 px-3 mb-2" href="/objetivos"><i class="fa fa-heartbeat me-3"></i>Gestionar objetivos</a>
+                        
+                    </div>
+                </div>
+                <!-- Category End -->
+
+                <!-- Category Start -->
+                <div class="mb-5">
+                    <h4 class="d-inline-block text-secondary text-uppercase border-bottom border-5 mb-4">Actualizar</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="h5 under bg-light rounded py-2 px-3 mb-2" href="/actualizar-data"><i class="fa fa-edit me-3"></i>Actualizar datos</a>
+                        <a class="h5 under bg-light rounded py-2 px-3 mb-2" href="/actualizar-contrasena"><i class="fa fa-key me-3"></i>actualizar contraseña</a>
+                        <a class="h5 under bg-light rounded py-2 px-3 mb-2" href="/update-gmail"><i class="fa fa-at me-3"></i>Actualizar email</a>
+                         <a  class="h5 under bg-light rounded py-2 px-3 mb-2" href="/delete"><i class="fa fa-trash me-3"  ></i>Eliminar cuenta</a> --> 
+                         <!-- <button class="h5 bg-light rounded py-2 px-3 mb-2"   class="fa fa-trash me-2" (click)="confirmarEliminarUsuario()">Eliminar cuenta</button>  -->
+
+
+                    </div>
+                </div>
+                <!-- Category End -->
+
+               
+            </div>
+            <!-- Sidebar End -->
+
+
+            <div class="col-lg-8">
+
+                <div class="mb-5">
+                    <div class="row g-5">
+
+                            <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Alimentos</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Tomate</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Salchipapa</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Brocoli</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>    
+                       -->
+                        
+
+                        <!-- <div class="col-lg-4 col-md-6" *ngFor="let seguimiento of seguimientos as iterable">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                              <div class="service-icon mb-4">
+                                <i class="fa fa-2x fa-procedures text-white"></i>
+                              </div>
+                              <h4 class="mb-3">Alimentos</h4>
+                              <p class="m-0" *ngFor="let alimento of seguimiento.alimentos">
+                                <i class="fa fa-angle-right me-2"></i>{{ alimento }}
+                              </p>
+                              <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                <i class="bi bi-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div> -->
+                          
+                          <!-- <div *ngFor="let item of seguimientos | keyvalue">
+                            {{ item.key }}: {{ item.value }}
+                          </div> -->
+                          
+
+                          <!-- Agrega un formulario o campo de entrada para la ID del seguimiento -->
+                          <div class="text-center col-12">
+                            <input type="number" class="form-control w-100" [(ngModel)]="id_seguimiento" placeholder="ID del seguimiento">
+                          </div>
+                      
+                     <div class="text-center col-12">
+
+                         <button class="button btn btn-primary w-100 py-3" type="button"    (click)="obtenerDatosSeguimientos()">Obtener Seguimiento</button> 
+                     </div> 
+                    
+<!--                       
+                     <div>
+                        <h2>Seguimientos del usuario</h2>
+                        <ul>
+                          <li *ngFor="let seguimiento of seguimientoI">
+                            Fecha: {{ seguimiento.fecha | date }}<br>
+                            Alimentos: {{ seguimiento.alimentos }}<br>
+                            Actividad física: {{ seguimiento.actividad_fisica }}<br>
+                            Frecuencia cardíaca: {{ seguimiento.frecuencia_cardiaca }}<br>
+                            Peso: {{ seguimiento.peso }}<br>
+                            Presión arterial: {{ seguimiento.presion_arterial }}<br>
+                        </li>
+                      </ul>
+                    </div>
+                     -->
+                      
+                    
+                    
+
+                           <div class="  row">
+                            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of seguimientos | keyvalue">
+                              <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                  <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">{{ item.key }}</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>{{ item.value }}</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                  <i class="bi bi-arrow-right"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div> 
+                          
+                          <!-- <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of seguimientos | keyvalue">
+                              <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                  <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">{{ item.value.fecha }}</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Peso: {{ item.value.peso }}</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Frecuencia Cardiaca: {{ item.value.frecuencia_cardiaca }}</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Alimentos: {{ item.value.alimentos }}</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>Presión Arterial: {{ item.value.presion_arterial }}</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                  <i class="bi bi-arrow-right"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                           -->
+                          
+
+
+
+
+
+
+
+                         <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Actividad Fisica</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>2x Burpies</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>5x Planchas</p>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>12km Recorridos</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>  -->
+                         <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Peso</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>120 KG</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>  -->
+                         <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Frecuencia Cardiaca</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>72 RPM</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>  -->
+                         <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Presion Arterial</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>2,2 Cm</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>  -->
+                         <!-- <div class="col-lg-4 col-md-6">
+                            <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon mb-4">
+                                    <i class="fa fa-2x fa-procedures text-white"></i>
+                                </div>
+                                <h4 class="mb-3">Fecha del ultimo seguimiento</h4>
+                                <p class="m-0"><i class="fa fa-angle-right me-2"></i>25 de Mayo 2023</p>
+                                <a class="btn btn-lg btn-primary rounded-pill" href="">
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>  -->
+                    </div>
+                    
+                    
+                </div>
+
+
+                <!-- Comment List Start -->
+                <div class="mb-5">
+                    <h1 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Reporte de Seguimiento</h1>
+                    <canvas id="miGrafica"></canvas>
+                    <p></p>
+                </div>
+
+
+                
+            </div>
+
+            
+        </div>
+    </div>
+
+
+
+    <!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Mantente en Contacto
+                </h4>
+                <p class="mb-4">Estas son nuestras lineas de atencion</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Atlantico, Barranquilla, Colombia</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@healthTrack.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+57 322 2222</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Accesos Directos</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Acerca de Nosotros</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Nuestros Servicios</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Unete al Equipo</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Ultimos Blogs</a>
+                    <a class="text-light" href="#"><i class="fa fa-angle-right me-2" (click)="navegarContactanos()"></i>Contactanos</a> 
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Links Populares</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Acerca de Nosotros</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Nuestros Servicios</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Unete al Equipo</a>
+                    <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Ultimos Blogs</a>
+                    <a class="text-light" href="#"><i class="fa fa-angle-right me-2" (click)="navegarContactanos()"></i>Contactanos</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Boletín</h4>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3 border-0" placeholder="Tu Direccion de Email">
+                        <button class="btn btn-primary">Inscribirse</button>
+                    </div>
+                </form>
+                <h6 class="text-primary text-uppercase mt-4 mb-3">Siguenos</h6>
+                <div class="d-flex">
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-light border-top border-secondary py-4">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-md-0">&copy; <a class="text-primary" href="#">Health Track</a>. Todos los derechos reservados.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Diseñado por <a class="text-primary" href="">Juan Bossa</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+    
+</body>
+
+</html>

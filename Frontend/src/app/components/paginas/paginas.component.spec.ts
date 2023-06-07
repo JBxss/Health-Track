@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PaginasComponent } from './paginas.component';
+
+describe('PaginasComponent', () => {
+  let component: PaginasComponent;
+  let fixture: ComponentFixture<PaginasComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PaginasComponent]
+    });
+    fixture = TestBed.createComponent(PaginasComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
